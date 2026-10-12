@@ -1,0 +1,13 @@
+# surge 部署排除清单（写法同 .gitignore）
+# 只影响 `npx surge` 上传的内容，不影响 GitHub Pages。
+# 目的：只把「网站本身」发到公网，不带仓库里的资料、脚本和说明文件。
+course-tools/
+tools/
+课堂资料/
+README.md
+course-manifest.json
+works-data.js
+works-render.js
+
+# 下面这些 surge 默认就会跳过，不用写：
+#   .git  /  .github  /  node_modules  /  所有以点号开头的文件

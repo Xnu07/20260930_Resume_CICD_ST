@@ -14,18 +14,19 @@
   font-display: swap;
 }
 :root {
-  /* 配色层级：墨绿主标题、古铜次标题、深灰正文、香槟色细线。 */
-  --text: #343c38;
-  --muted: #6d746d;
-  --accent: #42635b;
-  --heading: #254a40;
-  --subheading: #7c6348;
-  --gold: #b8a27d;
-  --heading-wash: #edf1ea;
+  /* 配色层级：整体淡蓝调。
+     换主题只需要改下面这几个色值，全站颜色会自动跟着变。 */
+  --text: #2b3540;         /* 正文：深蓝灰 */
+  --muted: #61748c;        /* 次要文字：灰蓝 */
+  --accent: #2f6dab;       /* 链接、强调色 */
+  --heading: #1c3f67;      /* 主标题：深蓝 */
+  --subheading: #42699a;   /* 次标题：中蓝 */
+  --gold: #6ba6dd;         /* 细线、下划线、按钮描边：浅蓝 */
+  --heading-wash: #dbe9f9; /* 栏目标题底色：淡蓝 */
   --body-size: 19px;
   --title-size: 32px;
-  --line: #e1ddd3;
-  --background: #fbfaf6;
+  --line: #cfdeef;         /* 分隔线：淡蓝灰 */
+  --background: #e9f1fb;   /* 页面背景：淡蓝 */
 }
 * { box-sizing: border-box; }
 html { scroll-padding-top: 94px; scroll-behavior: smooth; }
@@ -42,21 +43,15 @@ h1, h2, h3, p, figure { margin: 0; }
 h1, h2, h3 { line-height: 1.5; }
 h2 { font-size: var(--title-size); font-weight: 600; color: var(--heading); }
 h3 { font-size: 22px; font-weight: 600; color: var(--subheading); }
-::selection { background: #e3e8db; }
+::selection { background: #cfe2f8; }
 .container { width: min(1200px, calc(100% - 96px)); margin-inline: auto; }
 .skip-link { position: fixed; top: -100px; left: 16px; z-index: 30; padding: 10px; background: white; }
 .skip-link:focus { top: 12px; }
 
-/* 2. 顶部只保留姓名和普通锚点导航。 */
-.site-header { position: sticky; top: 0; z-index: 10; background: #fbfaf6f5; backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
-.header-inner { display: flex; justify-content: space-between; align-items: center; gap: 30px; min-height: 70px; }
+/* 2. 顶部标题栏：只保留站名（导航链接已移除，不会再被引用）。 */
+.site-header { position: sticky; top: 0; z-index: 10; background: #e9f1fbf5; backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.header-inner { display: flex; align-items: center; min-height: 70px; }
 .brand { font-size: 24px; font-weight: 600; color: var(--text); white-space: nowrap; }
-.brand span { font-size: 14px; font-weight: 400; letter-spacing: 1px; margin-left: 12px; color: var(--muted); }
-nav { display: flex; gap: 28px; }
-nav a { color: var(--muted); font-size: 17px; }
-nav a:hover { color: var(--accent); }
-/* JavaScript 只切换类名；选中时的外观仍由 CSS 负责。 */
-nav a.is-current { color: var(--heading); font-weight: 600; text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 2px; text-underline-offset: 7px; }
 
 /* 3. 个人介绍：文字和照片并排，基本资料全部展开。 */
 .hero { padding: 44px 0 32px; }
@@ -66,7 +61,7 @@ h1 span { font-size: 32px; font-weight: 400; letter-spacing: 0; color: var(--sub
 .hero-role { margin-bottom: 12px; font-size: 20px; }
 .hero-school { color: var(--muted); font-size: 18px; }
 .hero-visual { flex-shrink: 0; }
-.hero-visual figure { padding: 9px; border: 1px solid #d8ceb9; background: #fffefa; box-shadow: 0 12px 32px #3444390b; }
+.hero-visual figure { padding: 9px; border: 1px solid #c3d8ef; background: #fff; box-shadow: 0 12px 32px #1c3f670b; }
 .hero-visual img { display: block; width: 220px; height: 220px; object-fit: cover; }
 .research-direction { margin-top: 30px; }
 .research-direction > span { font-size: 20px; font-weight: 600; color: var(--subheading); }
@@ -85,7 +80,7 @@ h1 span { font-size: 32px; font-weight: 400; letter-spacing: 0; color: var(--sub
 .experience-item { margin-bottom: 26px; }
 .experience-item:last-child { margin-bottom: 0; }
 .experience-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; }
-.experience-heading strong { font-size: var(--body-size); font-weight: 600; color: #465951; }
+.experience-heading strong { font-size: var(--body-size); font-weight: 600; color: #2f4d70; }
 .experience-heading time { flex-shrink: 0; color: var(--muted); font-size: 16px; font-variant-numeric: tabular-nums; }
 .experience-detail { margin-top: 8px; color: var(--text); font-size: var(--body-size); }
 .research-item { margin-bottom: 28px; }
@@ -96,7 +91,7 @@ h1 span { font-size: 32px; font-weight: 400; letter-spacing: 0; color: var(--sub
 .skills-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 .skills-list li { font-size: var(--body-size); }
 .skills-list strong { display: block; margin-bottom: 8px; font-weight: 600; color: var(--subheading); }
-.skills-list li { padding-top: 15px; border-top: 1px solid #c8baa2; }
+.skills-list li { padding-top: 15px; border-top: 1px solid #a8c6e8; }
 /* 作品图像是实际网站截图。Grid 管布局，CSS 过渡负责轻微悬停效果。 */
 #portfolio { background: #f4f2eb; }
 .portfolio-list { padding: 0; margin: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
@@ -116,13 +111,13 @@ h1 span { font-size: 32px; font-weight: 400; letter-spacing: 0; color: var(--sub
 .work-copy:after { content: '↗'; position: absolute; top: 20px; right: 25px; color: var(--subheading); font-size: 24px; }
 .teaching-group { margin-bottom: 26px; scroll-margin-top: 94px; }
 .teaching-group:last-child { margin-bottom: 0; }
-.teaching-group h3 { margin-bottom: 16px; padding-bottom: 9px; border-bottom: 1px solid #e4ded2; }
+.teaching-group h3 { margin-bottom: 16px; padding-bottom: 9px; border-bottom: 1px solid #d3e3f5; }
 .teaching-group ol { margin: 0; padding-left: 25px; }
 .teaching-group li { padding-left: 7px; margin-bottom: 10px; font-size: var(--body-size); }
 .teaching-group li::marker { color: var(--muted); font-size: 16px; }
 .publication-group { margin-bottom: 28px; }
 .publication-group:last-child { margin-bottom: 0; }
-.publication-group h3 { margin-bottom: 16px; padding-bottom: 9px; border-bottom: 1px solid #e4ded2; }
+.publication-group h3 { margin-bottom: 16px; padding-bottom: 9px; border-bottom: 1px solid #d3e3f5; }
 .references { margin: 0; padding-left: 25px; }
 .references li { padding-left: 7px; margin-bottom: 17px; font-size: var(--body-size); line-height: 1.9; overflow-wrap: anywhere; }
 .references li::marker { color: var(--muted); font-size: 16px; }
@@ -137,7 +132,6 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; }
 /* 5. 手机只调整布局，所有正文依旧直接可见。 */
 @media (max-width: 1000px) {
   .container { width: calc(100% - 64px); }
-  nav { gap: 20px; }
   .profile-details { grid-template-columns: repeat(2, 1fr); gap: 16px 30px; }
   .experience-heading { display: block; }
   .experience-heading time { display: block; margin-top: 4px; }
@@ -149,10 +143,7 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; }
   :root { --body-size: 18px; --title-size: 27px; }
   html { scroll-padding-top: 110px; }
   .container { width: calc(100% - 40px); }
-  .header-inner { display: block; min-height: 90px; padding: 10px 0; }
   .brand { font-size: 21px; }
-  nav { justify-content: space-between; gap: 12px; margin-top: 6px; }
-  nav a { font-size: 14px; }
   .hero { padding: 28px 0; }
   .hero-top { display: block; position: relative; }
   h1 { font-size: 38px; line-height: 1.3; margin-bottom: 18px; padding-right: 166px; min-height: 160px; }
